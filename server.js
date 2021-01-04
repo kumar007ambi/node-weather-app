@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 
 app.post('/', async (req, res) => {
     const city = req.body.city;
-    const url = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.API_KEY}`;
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.API_KEY}`;
 
     try {
         await fetch(url)
@@ -60,6 +60,14 @@ app.post('/', async (req, res) => {
         })
     }
 })
+
+app.use(function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] === 'https') {
+        res.redirect('http://' + req.hostname + req.url);
+    } else {
+        next();
+    }
+});
 
 const port = process.env.PORT || 7500;
 
