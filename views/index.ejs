@@ -1,0 +1,49 @@
+<%- include("./partials/header")  %>
+
+       <!-----Navar------->
+<nav class="navbar navbar-dark bg-info">
+  <div class="container-fluid">
+    <a class="navbar-brand text-dark" href="#" >Weather App</a>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <ul class="social-icons">
+        <a class="facebook" href="#"><i class="fa fa-facebook "></i></i></a>
+        <a class="instagram" href="#"><i class="fa fa-instagram "></i></a>
+        <a class="linkedin" href="#"><i class="fa fa-linkedin "></i></a>
+        <a class="github" href="#"><i class="fa fa-github"></i></a>
+      </ul>
+    </div>
+  </div>
+</nav>
+          <!-------Form Data and Result----->
+    <div class="container-app">
+      <div class="app">
+        <form action="/" method="post">
+          <input name="city" type="text" class="take-input" placeholder="Enter a City" required>
+          <br>
+          <br>
+          <input type="submit" class="weather-button" value="Get Weather">
+        </form>
+        <p id="date">WED | nov 23 | 10:49AM</p>
+        <hr>
+        <div class="result">
+          <% if(temp !==null) {%>
+            <h1 class="temp"><%= temp %>°</h1>
+          <%} %>      
+          <div class="icon-des">
+            <% if(icon !==null) {%>
+            <img src="http://openweathermap.org/img/wn/<%= icon %>.png" alt=""  class="icon">
+            <%} %>
+            <% if(des !==null) {%>
+            <h3><%= des %></h3>
+            <%} %>
+          </div>
+
+          <% if(city !==null) {%>
+          <h1 class="city"><%= city %></h1>
+          <%} %>
+       </div>
+     
+      </div>
+    </div>
+
+    <%- include("./partials/footer")  %>
