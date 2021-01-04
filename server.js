@@ -61,13 +61,7 @@ app.post('/', async (req, res) => {
     }
 })
 
-app.use(function (req, res, next) {
-    if (req.headers['x-forwarded-proto'] === 'https') {
-        res.redirect('http://' + req.hostname + req.url);
-    } else {
-        next();
-    }
-});
+
 
 const port = process.env.PORT || 7500;
 
