@@ -66,5 +66,5 @@ app.post('/', async (req, res) => {
 const port = process.env.PORT || 7500;
 
 app.listen(port, () => {
-    console.log("Sample App is Running On The Port 7500");
+    console.log("Sample App is Running On The Port " + port);
 })
